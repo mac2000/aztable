@@ -21,7 +21,8 @@ namespace AzTable
 		public TableResult Save(string metric, double value, DateTime date) => Table.Execute(TableOperation.InsertOrReplace(new Metric
 		{
 			PartitionKey = metric,
-			RowKey = new DateTimeOffset(date).ToUnixTimeSeconds().ToString()
+			RowKey = new DateTimeOffset(date).ToUnixTimeSeconds().ToString(),
+			Value = value
 		}));
 
 		internal class Metric : TableEntity
